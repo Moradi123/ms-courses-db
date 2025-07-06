@@ -18,7 +18,7 @@ public class CourseController {
     @Autowired
     CourseService courseService;
     
-    @GetMapping("/{id}")
+    @GetMapping("/{id:\\d+}")
     public ResponseEntity<CourseDTO> findCourseById(@PathVariable(name = "id") Long id) {
         CourseDTO CourseDTO = courseService.findCourseById(id);
         if (CourseDTO != null) {
@@ -27,10 +27,6 @@ public class CourseController {
             return ResponseEntity.notFound().build();
         }
     }
-    /*@GetMapping("/courses")
-        public List<Course> selectAllCourse(){
-        return courseService.selectAllCourses();
-    */
 }
 
 
